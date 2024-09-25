@@ -1,0 +1,261 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:theme="@style/MyMaterialTheme.Capture"
+    android:id="@+id/root"
+    android:background="#FF444444"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <!-- Camera 2560000 5242880 2621440 -->
+    <com.otaliastudios.cameraview.CameraView
+        android:id="@+id/camera"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:layout_marginBottom="0dp"
+        android:keepScreenOn="true"
+        app:cameraAudioBitRate="0"
+        app:cameraVideoCodec="deviceDefault"
+        app:cameraVideoBitRate="0"
+        app:cameraPreviewFrameRate="0"
+        app:cameraFacing="back"
+        app:cameraExperimental="true"
+        app:cameraEngine="camera2"
+        app:cameraPreview="glSurface"
+        app:cameraPlaySounds="true"
+        app:cameraGrid="off"
+        app:cameraFlash="auto"
+        app:cameraAudio="on"
+        app:cameraGestureTap="none"
+        app:cameraGestureLongTap="none"
+        app:cameraGesturePinch="zoom"
+        app:cameraGestureScrollHorizontal="zoom"
+        app:cameraGestureScrollVertical="zoom"
+        app:cameraMode="video"
+        app:cameraAutoFocusMarker="@string/cameraview_default_autofocus_marker">
+
+        <ProgressBar
+            android:id="@+id/progressBar"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="match_parent"
+            android:layout_height="5dp"
+            android:max="5000"
+            android:progress="2000"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:background="@drawable/capture_progressbar_bg"
+            android:progressDrawable="@drawable/capture_progressbar" />
+
+    </com.otaliastudios.cameraview.CameraView>
+
+    <ImageButton
+        android:id="@+id/closeButton"
+        android:layout_width="?actionBarSize"
+        android:layout_height="?actionBarSize"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="0dp"
+        android:layout_marginEnd="0dp"
+        android:layout_marginBottom="0dp"
+        android:background="@color/transparent"
+        android:contentDescription="@string/app_name"
+        android:padding="8dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/ic_delete"
+        app:tint="@color/white" />
+
+    <!-- Controls -->
+
+    <RelativeLayout
+        android:id="@+id/actions_menu_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:layout_marginBottom="16dp">
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fab_capture"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_gravity="center"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="24dp"
+            android:layout_marginBottom="16dp"
+            android:contentDescription="TODO"
+            android:src="@drawable/ic_capture_start"
+            android:tint="@color/white"
+            app:backgroundTint="@color/colorAccent"
+            app:borderWidth="0dp"
+            app:elevation="2dp"
+            app:fabSize="normal"
+            android:elevation="3dp"
+            tools:ignore="RelativeOverlap" />
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fab_toggle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_capture_toggle_2"
+            android:tint="@color/white"
+            app:fabSize="mini"
+            android:elevation="3dp"
+            android:layout_centerVertical="true"
+            android:layout_toStartOf="@id/fab_capture"
+            android:contentDescription="@string/app_name" />
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fab_audio"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:fabSize="mini"
+            android:src="@drawable/ic_capture_micro_on"
+            android:tint="@color/white"
+            android:elevation="3dp"
+            android:layout_centerVertical="true"
+            android:layout_toEndOf="@id/fab_capture"
+            android:contentDescription="@string/app_name" />
+
+    </RelativeLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/time_menu_layout"
+        android:layout_alignParentEnd="true"
+        android:layout_gravity=""
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fab_time_menu"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="39dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginRight="16dp"
+            android:tint="@android:color/white"
+            app:fabSize="mini"
+            android:elevation="3dp"
+            app:layout_constraintBottom_toBottomOf="@+id/time_menu_layout"
+            app:layout_constraintRight_toRightOf="@+id/time_menu_layout"
+            app:srcCompat="@drawable/ic_time" />
+
+        <LinearLayout
+            android:id="@+id/normal_video_layout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="12dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginRight="16dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:visibility="invisible"
+            app:layout_constraintBottom_toTopOf="@+id/medium_video_layout"
+            app:layout_constraintRight_toRightOf="@+id/time_menu_layout">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:layout_marginRight="8dp"
+                android:elevation="2dp"
+                android:fontFamily="sans-serif"
+                android:padding="5dip"
+                android:text="@string/label_video_normal"
+                android:textColor="@android:color/white"
+                android:typeface="normal" />
+
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/fab_time_normal_video"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:fabSize="mini"
+                app:elevation="0dp"
+                app:borderWidth="0dp"
+                android:tint="@android:color/white"
+                app:srcCompat="@drawable/ic_time" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/medium_video_layout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="12dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginRight="16dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:visibility="invisible"
+            app:layout_constraintBottom_toTopOf="@+id/short_video_layout"
+            app:layout_constraintRight_toRightOf="@+id/time_menu_layout">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:layout_marginRight="8dp"
+                android:elevation="2dp"
+                android:fontFamily="sans-serif"
+                android:padding="5dip"
+                android:text="@string/label_video_medium"
+                android:textColor="@android:color/white"
+                android:typeface="normal" />
+
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/fab_time_medium_video"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:fabSize="mini"
+                app:elevation="0dp"
+                app:borderWidth="0dp"
+                android:tint="@android:color/white"
+                app:srcCompat="@drawable/ic_time" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/short_video_layout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="24dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginRight="16dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:visibility="invisible"
+            app:layout_constraintBottom_toTopOf="@+id/fab_time_menu"
+            app:layout_constraintRight_toRightOf="@+id/time_menu_layout">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:layout_marginRight="8dp"
+                android:elevation="2dp"
+                android:fontFamily="sans-serif"
+                android:padding="5dip"
+                android:text="@string/label_video_short"
+                android:textColor="@android:color/white"
+                android:typeface="normal" />
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/fab_time_short_video"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:fabSize="mini"
+                app:elevation="0dp"
+                app:borderWidth="0dp"
+                android:tint="@android:color/white"
+                app:srcCompat="@drawable/ic_time" />
+
+        </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

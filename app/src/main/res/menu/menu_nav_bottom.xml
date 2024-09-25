@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/nav_stream"
+        android:icon="@drawable/ic_global"
+        android:title="Stream" />
+
+    <item
+        android:id="@+id/nav_notifications"
+        android:icon="@drawable/ic_activities"
+        android:title="activities" />
+
+    <item
+        android:id="@+id/nav_finder"
+        android:icon="@drawable/ic_swipe_cards5"
+        android:title="Discover" />
+
+    <item
+        android:id="@+id/nav_messages"
+        android:icon="@drawable/ic_chat"
+        android:title="Messages" />
+
+    <item
+        android:id="@+id/nav_menu"
+        android:icon="@drawable/ic_user"
+        android:title="Me" />
+
+</menu>
